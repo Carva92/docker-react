@@ -1,0 +1,16 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+ENV CHOKIDAR_USEPOLLING=true
+
+CMD ["npm", "run", "start"]
+
+#winpty docker run -it -p 3000:3000 -v ./app/node_modules -v /$(PWD):/app ca9a2b4bbda669b2a813262f9bb570790debcf37d7c0a
+
+#winpty docker run -it bb2eeac5fd8d353aedc01102d2bda0465fe02dd8f59ab npm run test
